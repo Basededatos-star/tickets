@@ -155,8 +155,8 @@ h2{font-size:19px;font-weight:600}
 .link{background:none;border:0;color:#6fb0ff;padding:0;text-decoration:underline}
 
 /* Escáner */
-#reader:empty{display:none}
-#reader{width:100%;max-width:420px;margin:0 auto;border-radius:12px;overflow:hidden;background:#000}
+#reader{width:100%;max-width:420px;min-height:260px;margin:0 auto;border-radius:12px;overflow:hidden;background:#000}
+#reader video{width:100%!important;height:auto!important;display:block}
 .scan-res{border-radius:var(--r);padding:20px;margin-top:18px;border:2px solid}
 .scan-res.ok{border-color:var(--ok);background:#06281a}
 .scan-res.warn{border-color:var(--warn);background:#2d2007}
