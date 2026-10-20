@@ -236,7 +236,7 @@ async function pageMyOrders() {
 }
 function pageProfile() {
   const v = shell('#/perfil', '');
-  v.innerHTML = `<h1 style="margin-bottom:18px">Perfil y seguridad</h1><div class="cols" style="grid-template-columns:1fr 1fr">
+  v.innerHTML = `<h1 style="margin-bottom:18px">Perfil y seguridad</h1><div class="cols cols-eq">
     <div class="card"><h2>Mis datos</h2><div class="bank"><div class="r"><span>Nombre</span><b>${esc(S.user.name)}</b></div><div class="r"><span>Correo</span><b>${esc(S.user.email)}</b></div>${S.user.phone ? `<div class="r"><span>Teléfono</span><b>${esc(S.user.phone)}</b></div>` : ''}</div></div>
     <form class="card" id="f"><h2 style="margin-bottom:14px">Cambiar contraseña</h2><div style="display:grid;gap:14px">
       ${field('lock', 'Contraseña actual', 'name="current" type="password" autocomplete="current-password" required')}
@@ -294,7 +294,7 @@ async function pageAdminOrders() {
 async function pageAdminEvents() {
   const v = shell('#/admin/eventos', '<div class="empty">Cargando…</div>');
   const { events } = await api('/api/admin/events');
-  v.innerHTML = `<h1 style="margin-bottom:18px">Eventos</h1><div class="cols" style="grid-template-columns:1fr 1fr">
+  v.innerHTML = `<h1 style="margin-bottom:18px">Eventos</h1><div class="cols cols-eq">
     <div class="list">${events.map((e) => `<div class="card order"><div><h3>${esc(e.title)} ${esc(e.subtitle)} ${e.active ? '<span class="badge b-aprobada">Activo</span>' : '<span class="badge b-cancelada">Oculto</span>'}</h3><div class="meta"><span>${fDate(e.event_date)} ${fTime(e.event_time)}</span><span>${esc(e.location)}</span><span>${money(e.price)}</span></div></div>
       <div class="acts"><button class="btn sm ghost" data-tg="${e.id}">${e.active ? 'Ocultar' : 'Mostrar'}</button></div></div>`).join('')}</div>
     <form class="card" id="f"><h2 style="margin-bottom:14px">Nuevo evento</h2><div style="display:grid;gap:12px">
@@ -318,7 +318,7 @@ async function stopScanner() { if (scanner) { try { await scanner.stop(); } catc
 async function pageScanner() {
   const v = shell('#/admin/escaner', '');
   v.innerHTML = `<h1 style="margin-bottom:6px">Escáner de boletos</h1><p class="muted" style="margin-bottom:18px">Apunta la cámara al código QR del boleto. La cámara requiere HTTPS (o localhost).</p>
-    <div class="cols" style="grid-template-columns:minmax(0,440px) 1fr"><div><div id="reader"></div><div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap"><button class="btn sm" id="start">Iniciar cámara</button><button class="btn sm ghost" id="stop">Detener</button></div>
+    <div class="cols cols-scan"><div><div id="reader"></div><div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap"><button class="btn sm" id="start">Iniciar cámara</button><button class="btn sm ghost" id="stop">Detener</button></div>
     <form id="mf" class="field" style="margin-top:18px"><label>¿Sin cámara? Pega el código del QR</label><div class="input"><input name="c" placeholder="DOKAN|…"></div></form><div class="err" id="serr"></div></div>
     <div id="res"><div class="card empty">El resultado del escaneo aparecerá aquí.</div></div></div>`;
   let last = '', lastAt = 0;
