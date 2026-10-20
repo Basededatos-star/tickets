@@ -1,0 +1,13 @@
+{
+  "name": "dokan-tickets",
+  "version": "1.0.0",
+  "description": "DOKAN Tickets & Eventos - venta de entradas con verificación, QR, correo y WhatsApp",
+  "main": "server.js",
+  "engines": { "node": ">=22.5" },
+  "scripts": { "start": "node --no-warnings server.js" },
+  "dependencies": {
+    "nodemailer": "^6.9.16",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.33.5"
+  }
+}
